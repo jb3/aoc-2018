@@ -41,13 +41,13 @@ class Claim:
 with open("input.txt", "r") as f:
     claims = [line.strip() for line in f.readlines()]
 
-claim_list = []
+claim_list = set()
 
 claimed_squares = set()
 
 for claim in claims:
     clm = Claim.from_text(claim)
-    claim_list.append(clm)
+    claim_list.add(clm)
 
 overlapping_inches = 0
 overlapping_squares = set()
