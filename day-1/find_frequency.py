@@ -14,7 +14,7 @@ for number in inputs:
     frequency += number
     seen_freqs.add(frequency)
 
-    
+
 for number in itertools.cycle(inputs):
     frequency += number
     if frequency in seen_freqs:
