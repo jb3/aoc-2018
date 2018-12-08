@@ -60,11 +60,11 @@ for clm in claim_list:
 
         claimed_squares.add(square)
 
-print(overlapping_inches)
+print(f"AoC part 1 answer: {overlapping_inches}")
 
 for clm in claim_list:
     for square in clm.covered_squares:
         if square in overlapping_squares:
             break
     else:
-            print(clm)
+        print(f"AoC part 2 answer: {clm.claim_id}")

@@ -14,11 +14,11 @@ for number in inputs:
     frequency += number
     seen_freqs.add(frequency)
 
+print(f"AoC part 1 answer: {frequency}")
 
 for number in itertools.cycle(inputs):
     frequency += number
     if frequency in seen_freqs:
-        print("found")
         break
 
-print(frequency)
+print(f"AoC part 2 answer: {frequency}")

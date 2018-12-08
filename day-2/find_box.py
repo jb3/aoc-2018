@@ -19,4 +19,4 @@ for box in boxes:
             found_two = True
             two_times += 1
 
-print(three_times * two_times)
+print(f"AoC part 1 answer: {three_times * two_times}")
