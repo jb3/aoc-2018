@@ -107,7 +107,7 @@ while True:
             (worker.current_job if worker.current_job is not None else ".").rjust(15)
             for worker in manager.workers
         ],
-        "".join([x[0][0] for x in steps.items() if x[1].completed == True]).rjust(15),
+        "".join([x[0][0] for x in steps.items() if x[1].completed is True]).rjust(15),
     )
     ticks += 1
 
