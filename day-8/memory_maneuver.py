@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+from collections import deque
 from dataclasses import dataclass
 
 # fuck you stack traces
@@ -15,13 +16,13 @@ class Node:
 
 
 with open("input.txt", "r") as f:
-    tree_data = [int(f) for f in f.read().split(" ")]
+    tree_data = deque([int(f) for f in f.read().split(" ")])
 
-metadata = []
+metadata = deque()
 
 
 def parse_node(data):
-    child_count, metadata_count = tree_data.pop(0), tree_data.pop(0)
+    child_count, metadata_count = tree_data.popleft(), tree_data.popleft()
 
     children = []
     if child_count > 0:
@@ -31,7 +32,7 @@ def parse_node(data):
     meta = []
     value = 0
     for i in range(metadata_count):
-        m = data.pop(0)
+        m = data.popleft()
         meta.append(m)
         metadata.append(m)
 
