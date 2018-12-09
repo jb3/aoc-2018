@@ -1,11 +1,15 @@
 mod input;
-mod player;
 
 use std::collections::VecDeque;
 
 #[derive(Debug)]
 struct Marble {
 	pub number: i64
+}
+
+#[derive(Debug)]
+pub struct Player {
+	pub score: i64
 }
 
 fn main() {
@@ -27,7 +31,7 @@ fn play_game(player_count: i64, marble_count: i64) -> i64 {
 	}
 
 	for _i in 0..player_count {
-		players.push(player::Player::new());
+		players.push(Player{ score: 0 });
 	}
 
 	let zero_marble = marbles.pop_front().unwrap();
@@ -48,10 +52,9 @@ fn play_game(player_count: i64, marble_count: i64) -> i64 {
 		let marble = marbles.pop_front().unwrap();
 
 		if marble.number % 23 == 0 {
-			player.increase_score(marble.number);
 			rotate_right(&mut circle, 7);
 			let counter_seventh_marble: Marble = circle.pop_front().unwrap();
-			player.increase_score(counter_seventh_marble.number);
+			player.score += marble.number + counter_seventh_marble.number;
 			continue;
 		}
 
@@ -83,7 +86,7 @@ fn rotate_left(marbles: &mut VecDeque<Marble>, rotations: usize) {
 	}
 }
 
-fn top_scorer(players: &mut Vec<player::Player>) -> &player::Player {
+fn top_scorer(players: &mut Vec<Player>) -> &Player {
 	players.sort_unstable_by(|a, b| a.score.cmp(&b.score));
 
 	return players.last().unwrap();
