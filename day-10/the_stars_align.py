@@ -16,7 +16,6 @@ with open("input.txt", "r") as f:
     star_text = [l.strip() for l in f.readlines()]
 
 
-
 stars = []
 
 for star in star_text:
@@ -33,6 +32,6 @@ while True:
             print(f"Second {seconds} contained negative values, not printing.")
         continue
 
-
     print(f"Message at {seconds}")
     sky.print(seconds)
+    

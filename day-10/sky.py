@@ -6,15 +6,19 @@ class Sky:
     def __init__(self, points):
         self.stars = points
 
-        self.height, self.width, self.min_x, self.min_y = self.calculate_heights(0)
+        self.height, self.width, \
+            self.min_x, self.min_y = self.calculate_heights(0)
 
         self.old_min_x = None
         self.old_min_y = None
         self.warned = False
 
     def calculate_heights(self, seconds):
-        sorted_x = sorted(self.stars, key=lambda x: x.get_position_at(seconds)[0])
-        sorted_y = sorted(self.stars, key=lambda x: x.get_position_at(seconds)[1])
+        sorted_x = sorted(self.stars,
+                          key=lambda x: x.get_position_at(seconds)[0])
+
+        sorted_y = sorted(self.stars,
+                          key=lambda x: x.get_position_at(seconds)[1])
 
         min_x = sorted_x[0].get_position_at(seconds)[0]
         max_x = sorted_x[len(sorted_x) - 1].get_position_at(seconds)[0]
@@ -34,7 +38,8 @@ class Sky:
         self.old_min_x = self.min_x
         self.old_min_y = self.min_y
 
-        self.height, self.width, self.min_x, self.min_y = self.calculate_heights(seconds)
+        self.height, self.width, \
+            self.min_x, self.min_y = self.calculate_heights(seconds)
 
         if self.old_min_x - self.min_x > 0:
             print("X difference is getting bigger!")
@@ -42,7 +47,6 @@ class Sky:
 
         if self.warned:
             exit()
-
 
         sky = []
         for i in range(self.height):
@@ -59,7 +63,8 @@ class Sky:
         return sky
 
     def contains_negative_values(self, seconds):
-        self.height, self.width, self.min_x, self.min_y = self.calculate_heights(seconds)
+        self.height, self.width, \
+            self.min_x, self.min_y = self.calculate_heights(seconds)
         return self.min_x < 0 or self.min_y < 0
 
     def print(self, seconds):
@@ -97,3 +102,4 @@ class Star:
         vel_y = int(velocity_string[1].rstrip(">"))
 
         return cls((position_x, position_y), (vel_x, vel_y))
+        
