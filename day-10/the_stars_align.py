@@ -34,4 +34,3 @@ while True:
 
     print(f"Message at {seconds}")
     sky.print(seconds)
-    

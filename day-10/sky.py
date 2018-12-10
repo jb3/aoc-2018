@@ -102,4 +102,3 @@ class Star:
         vel_y = int(velocity_string[1].rstrip(">"))
 
         return cls((position_x, position_y), (vel_x, vel_y))
-        
